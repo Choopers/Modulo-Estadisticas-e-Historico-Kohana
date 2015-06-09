@@ -1,0 +1,46 @@
+{include cabecera.html}
+<body >
+	{include titulo.html}
+	{include menu.html}
+	<div class="contenido">
+		<form method="post" action="http://localhost/framework/index.php/Home/buscadorProductos" >
+			Producto: <input type="text" name="criterio" id="criterio" value="{utf8_encode $criterio}" /><input type="submit" value="Buscar!" />
+		</form>
+		<br />
+		{if count($datos) > 0}
+		<table>
+			<tr>
+				<th>Prod ID</th>
+				<th>Producto</th>
+				<th>Marca</th>
+				<th>Stock</th>
+			</tr>
+			{foreach $datos row}
+				<tr>
+					<td><a class="buscar" pid="{$row['id']}" href="http://localhost/framework/index.php/Producto/fichaProducto" >{$row['id']}</a></td>
+					<td>{utf8_decode $row['producto']}</td>
+					<td>{$row['marca']}</td>
+					<td>{$row['cantidad']}</td>
+				</tr>
+			{else}
+				<tr>
+					<td colspan="4">Busqueda Sin Resultados</td>
+				</tr>
+			{/foreach}
+		</table>
+		{/if}		
+	</div>
+</body>
+{include pie.html}
+
+<script type="text/javascript">
+
+	$(".contenido").click(
+		function(event){
+			event.preventDefault();
+			var contenedor = $(this).parent();
+			contenedor.load($(this).attr('href'), { id: $(this).attr("pid"), producto: $(this).html()});
+		}
+	);
+	
+</script>

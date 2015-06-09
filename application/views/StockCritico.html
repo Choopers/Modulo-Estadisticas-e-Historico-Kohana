@@ -1,0 +1,32 @@
+{include cabecera.html}
+<body >
+	{include titulo.html}
+	{include menu.html}
+	<div class="contenido">
+		<table>
+			<tr>
+				<th>Id Producto</th>
+                                <th>Nombre Producto</th>
+                                <th>Marca</th>
+                                <th>Stock</th>
+                              
+				
+			</tr>
+			{foreach $datos row}
+				<tr>
+					<td>{$row['id']}</td>
+                                        <td>{$row['producto']}</td>
+                                        <td>{$row['marca']}</td>
+                                        <td>{$row['cantidad']}</td>
+                                      
+				</tr>
+			{else}
+				<tr>
+					<td colspan="4">Movimientos</td>
+				</tr>
+			{/foreach}
+		</table>
+			
+	</div>
+</body>
+{include pie.html}

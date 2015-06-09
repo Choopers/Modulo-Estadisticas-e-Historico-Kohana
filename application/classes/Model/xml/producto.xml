@@ -1,0 +1,24 @@
+<class id="producto" name="producto">
+
+    <getProductoId value="
+						select * from producto
+						where
+							id = '@@id@@'
+				" />
+
+    <getProductos value="
+						select * from producto
+						where
+							producto like '%@@criterio@@%'
+				" />
+				
+    <editarNombreProducto value="
+					update producto set producto = '@@producto@@'
+					where
+						id = '@@id@@'
+				" />
+                                
+    <StockCritico value=" SELECT * FROM producto HAVING 5 >= cantidad "
+        />
+
+</class>

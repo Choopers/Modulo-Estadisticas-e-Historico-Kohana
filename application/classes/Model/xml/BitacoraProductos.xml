@@ -1,0 +1,22 @@
+<class id="bitacoraproductos" name="bitacoraproductos">
+
+    
+
+
+<buscar value="
+						select * from bitacora_producto
+						
+							
+				" />
+<diezmovimientos value="
+SELECT id_producto,(COUNT(id_producto)) AS 'movimientos',producto, marca, 
+cantidad FROM bitacora_producto,producto where bitacora_producto.id_producto=producto.id 
+group by id_producto ORDER BY cantidad LIMIT 0,10 						
+							
+				" />
+<movimientosUsuarios value="
+SELECT usuario,(COUNT(usuario)) AS 'movimientos',nombre FROM bitacora_producto,usuario where 
+bitacora_producto.usuario=usuario.user group by usuario ORDER BY movimientos DESC LIMIT 0,5 
+" />
+
+</class>

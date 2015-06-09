@@ -1,0 +1,56 @@
+{include cabecera.html}
+<body >
+    {include titulo.html}
+    {include menu.html}
+    <h1>{$lucho}</h1>
+    <div class="contenido">
+        <form action="http://localhost/framework/index.php/Home/ReportesUsuarios2" method="POST" name="formulario" >
+            <table align="center" >
+                <tr><td>Usuario</td><td><select name="usuario"  id="usuario" > 
+                                                <option value="0">Seleccione un Usuario</option>
+
+                            {foreach $datos row}
+<a class="enlace" href="http://localhost/framework/index.php/Home/pico" >
+                            <option value=" {$row['user']} "  >{$row['nombre']}</option>
+                            </a>
+                            {/foreach}
+                    
+            </select><input type="submit" value="Buscar"/> </td></tr>
+<span id="contenido"></span>
+            </table>
+{if count($user) > 0}
+		<table>
+			<tr>
+				<th>Fecha</th>
+				<th>Hora</th>
+				<th>Evento</th>
+				
+			</tr>
+			{foreach $user row}
+				<tr>
+					<td>{$row['fecha']}</td>
+                                        
+					<td>{$row['evento']}</td>
+					
+					<td>{$row['hora']}</td>
+				</tr>
+			{else}
+				<tr>
+					<td colspan="4"> Sin Eventos</td>
+				</tr>
+			{/foreach}
+		</table>
+		{/if}
+            </body>
+            {include pie.html}
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$("#usuario").change(function(){
+		var op = $("#usuario option:selected").val();
+		$('#contenido').html(op);
+	});
+});
+</script>

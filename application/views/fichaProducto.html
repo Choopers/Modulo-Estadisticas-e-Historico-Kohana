@@ -1,0 +1,35 @@
+{include cabecera.html}
+<body >
+	{include titulo.html}
+	{include menu.html}
+	<div class="contenido">
+		<table>
+			<tr>
+				<td>Prod ID</td>
+				<td></td>
+			</tr>
+				<td>Producto</td>
+				<td></td>
+			</tr>
+				<td>Marca</td>
+				<td></td>
+			</tr>
+				<td>Stock</td>
+				<td></td>
+			</tr>
+		</table>		
+	</div>
+</body>
+{include pie.html}
+
+<script type="text/javascript">
+
+	$(".editor").click(
+		function(event){
+			event.preventDefault();
+			var contenedor = $(this).parent();
+			contenedor.load($(this).attr('href'), { id: $(this).attr("pid"), producto: $(this).html()});
+		}
+	);
+	
+</script>

@@ -1,0 +1,24 @@
+
+ç<form id="frm{$id}" action="http://localhost/framework/index.php/Producto/editarNombreProducto">
+	<input type="text" id="producto" value="{$nombreproducto}" /><input id="btn{$id}" type="button" value="Guardar!" />
+</form>
+
+
+<script type="text/javascript">
+	
+	$("#btn{$id}").click(
+		function(event){
+			event.preventDefault();
+			var contenedor = $(this).parent().parent();
+			
+			$.post(
+				$("#frm{$id}").attr("action")
+				,{ id: {$id}, producto: $("#producto").val()}
+				, function(data){
+					contenedor.html(data);
+				}
+			);
+		}
+	);
+	
+</script>

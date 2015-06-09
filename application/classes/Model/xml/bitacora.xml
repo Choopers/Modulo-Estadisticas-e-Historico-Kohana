@@ -1,0 +1,15 @@
+<class id="bitacora" name="bitacora">
+
+				<ingresarEventoUsuario value="
+						insert into bitacora (fecha, hora, evento, usuario) values
+						(now(), now(), '@@evento@@', '@@usuario@@')
+				" />
+<pancho value="select * from bitacora" />
+
+<buscaruser value="
+						select * from bitacora
+						where 
+							usuario = '@@usuario@@'
+							
+				" />
+</class>

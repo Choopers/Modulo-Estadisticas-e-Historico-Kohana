@@ -1,0 +1,49 @@
+{include cabecera.html}
+<body >
+	{include titulo.html}
+	{include menu.html}
+	<div class="contenido">
+            
+		<table>
+			<tr>
+				<th>Usuario</th>
+				<th>Nombre</th>
+                                <th>Clave</th>
+				
+			</tr>
+			{foreach $datos row}
+				<tr>
+					<td>{$row['user']}</td>
+					<td>{$row['nombre']}</td>
+					<td>{$row['password']}</td>
+				</tr>
+			{else}
+				<tr>
+					<td colspan="4">Sin productos</td>
+				</tr>
+			{/foreach}
+                        
+		</table>
+              <p> Desea Añadir Nuevos Usuarios Complete los Campos
+			<form method="post" action="http://localhost/framework/index.php/Home/buscadorProductos" >
+			Usuario: <input type="text" name="criterio" id="criterio" value="{utf8_encode $criterio}" />
+                        Nombre: <input type="text" name="criterio" id="criterio" value="{utf8_encode $criterio}" />
+                        Clave: <input type="text" name="criterio" id="criterio" value="{utf8_encode $criterio}" />
+                        <input type="submit" value="Añadir!" />
+                      
+		</form>
+	</div>
+</body>
+{include pie.html}
+
+<script type="text/javascript">
+
+	$(".editor").click(
+		function(event){
+			event.preventDefault();
+			var contenedor = $(this).parent();
+			//contenedor.load($(this).attr('href'), { id: $(this).attr("pid"), producto: $(this).html()});
+		}
+	);
+	
+</script>

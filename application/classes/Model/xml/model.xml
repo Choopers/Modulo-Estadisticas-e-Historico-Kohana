@@ -1,0 +1,8 @@
+<class id="mensajedia" name="mensajedia">
+
+				<getMensajedia value="
+						select mensaje from mensaje_dia where fecha = '@@fecha@@' order by rand() limit 0,1
+				" />
+
+
+</class>

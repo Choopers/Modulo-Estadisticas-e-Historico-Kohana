@@ -1,0 +1,43 @@
+{include cabecera.html}
+<body>
+	{include titulo.html}
+	{include menu.html}
+	<div class="contenido">
+		<table>
+			<tr>
+				<th>Prod ID</th>
+				<th>Producto</th>
+				<th>Marca</th>
+				<th>Stock</th>
+                                <th>Eliminar</th>
+			</tr>
+			{foreach $datos row}
+				<tr>
+					<td>{$row['id']}</td>
+					<td><a class="" pid="{$row['id']}" href="http://localhost/framework/index.php/Producto/frmModificarNombreProducto" >{utf8_decode $row['producto']}</a></td>
+					<td>{$row['marca']}</td>
+					<td>{$row['cantidad']}</td>
+                                        <td><a class="editor" pid="{$row['id']}" href="http://localhost/framework/index.php/Producto/frmModificarNombreProducto" >x</a></td>
+				</tr>
+			{else}
+				<tr>
+					<td colspan="4">Sin productos</td>
+				</tr>
+			{/foreach}
+		</table>
+			
+	</div>
+</body>
+{include pie.html}
+
+<script type="text/javascript">
+
+	$(".editor").click(
+		function(event){
+			event.preventDefault();
+			var contenedor = $(this).parent();
+			contenedor.load($(this).attr('href'), { id: $(this).attr("pid"), producto: $(this).html()});
+		}
+	);
+	
+</script>

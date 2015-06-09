@@ -1,0 +1,16 @@
+<class id="usuario" name="usuario">
+
+				<validarUsuario value="
+						select * from usuario
+						where 
+							user = '@@usuario@@'
+							and password = '@@password@@'
+				" />
+				
+			<ListarUsuarios value="
+						select * from usuario
+						
+				" />
+				
+
+</class>
